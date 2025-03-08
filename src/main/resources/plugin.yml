@@ -1,0 +1,4 @@
+name: WarpSuite
+version: 1.0
+main: net.npwdev.candor.warpsuite.WarpSuite
+api-version: 1.21

@@ -1,0 +1,22 @@
+# Ignore Maven target directory
+target/
+
+# Ignore IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Ignore Test Server
+Server/
+
+# Ignore build files
+*.jar
+*.zip
+*.tar.gz
+
+# Ignore local configuration files
+*.log
+*.tmp
+*.swp
