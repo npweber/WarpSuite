@@ -31,8 +31,10 @@ public class SetSubcommand {
             double x = player.getLocation().getX();
             double y = player.getLocation().getY();
             double z = player.getLocation().getZ();
+            float yaw = player.getLocation().getYaw();
+            float pitch = player.getLocation().getPitch();
 
-            plugin.getWarpManager().addPlayerWarp(player.getPlayerListName(), new Warp(warpName, world, x, y, z));
+            plugin.getWarpManager().addPlayerWarp(player.getPlayerListName(), new Warp(warpName, world, x, y, z, yaw, pitch));
             player.sendMessage("Warp created: " + warpName);
             return;
         }   
@@ -43,7 +45,7 @@ public class SetSubcommand {
             double y = Double.parseDouble(args[4]);
             double z = Double.parseDouble(args[5]);
 
-            plugin.getWarpManager().addPlayerWarp(player.getPlayerListName(), new Warp(warpName, world, x, y, z));
+            plugin.getWarpManager().addPlayerWarp(player.getPlayerListName(), new Warp(warpName, world, x, y, z, 0.0f, 0.0f));
             player.sendMessage("Warp created: " + warpName);
         }
     }

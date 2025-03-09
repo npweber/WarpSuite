@@ -28,6 +28,10 @@ public class WarpManager {
         return this.warps.get(playerName);
     }
 
+    public Map<String, List<Warp>> getAllWarps() {
+        return this.warps;
+    }
+
     public int getPlayerWarpCount(String playerName) {
         return this.warps.get(playerName) == null ? 0 : this.warps.get(playerName).size();
     }

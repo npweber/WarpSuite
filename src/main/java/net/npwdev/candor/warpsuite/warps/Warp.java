@@ -6,9 +6,9 @@ public class Warp {
     private final String name;
     private final Location location;
 
-    public Warp(String name, World world, double x, double y, double z) {
+    public Warp(String name, World world, double x, double y, double z, float yaw, float pitch) {
         this.name = name;
-        this.location = new Location(world, x, y, z);
+        this.location = new Location(world, x, y, z, yaw, pitch);
     }
 
     public String getName() {

@@ -12,27 +12,32 @@ import java.io.File;
 public class WarpSuite extends JavaPlugin {
 
     private WarpManager warpManager;
+
     private int warpCooldown;
     private CooldownManager cooldownManager;
 
     @Override
     public void onEnable() {
-        getLogger().info("WarpSuite has been enabled!");
-        
         warpManager = new WarpManager();
+        new JSONDataManager().loadPlayerWarps();
 
         if (!new File(getDataFolder(), "config.yml").exists())
             saveDefaultConfig();
 
-        warpCooldown = getConfig().getInt("warp-cooldown");
+        // TODO: Fix getConfig() NullPointerException
+        //warpCooldown = getConfig().getInt("warp-cooldown");
+        warpCooldown = 5;
         cooldownManager = new CooldownManager();
 
         getCommand("ws").setExecutor(new WarpSuiteCommand());
         getCommand("setdefaultcooldown").setExecutor(new SetDefaultCooldownCommand());
+
+        getLogger().info("WarpSuite has been enabled!");
     }
     
     @Override
     public void onDisable() {
+        new JSONDataManager().savePlayerWarps();
         getLogger().info("WarpSuite has been disabled!");
     }
 
