@@ -14,6 +14,12 @@ public class WarpSubcommand {
 
     public static void execute(CommandSender sender, String[] args) {
         Player player = (Player) sender;
+
+        if (plugin.getCooldownManager().playerIsOnCooldown(player.getPlayerListName())) {
+            sender.sendMessage("You are on cooldown. Please wait " + plugin.getWarpCooldown() + " seconds before warping again.");
+            return;
+        }
+
         List<Warp> playerWarps;
 
         if(plugin.getWarpManager().getPlayerWarpCount(player.getPlayerListName()) == 0) {
@@ -37,6 +43,7 @@ public class WarpSubcommand {
         }
 
         player.teleport(warp.getLocation());
+        plugin.getCooldownManager().addPlayerCooldown(player.getPlayerListName());
         sender.sendMessage("Teleported to warp: " + warpName);
     }
 }

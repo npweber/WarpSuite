@@ -1,5 +1,6 @@
 package net.npwdev.candor.warpsuite.warps;
 
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public class WarpManager {
 
-    private final HashMap<String, List<Warp>> warps;
+    private final Map<String, List<Warp>> warps;
 
     public WarpManager() {
         this.warps = new HashMap<>();

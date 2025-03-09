@@ -8,3 +8,7 @@ commands:
         description: WarpSuite command.
         usage: /warpsuite <set|del|warp|list>
         aliases: [ws]
+    setdefaultcooldown:
+        description: Set the default cooldown for warps.
+        usage: /setdefaultcooldown <seconds>
+        aliases: [setcd]
