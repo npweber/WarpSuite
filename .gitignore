@@ -10,6 +10,10 @@ target/
 
 # Ignore Test Server
 Server/
+build.sh
+runClient.sh
+runServer.sh
+reload.sh
 
 # Ignore build files
 *.jar
