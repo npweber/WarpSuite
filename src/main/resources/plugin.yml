@@ -8,7 +8,19 @@ commands:
         description: WarpSuite command.
         usage: /warpsuite <set|del|warp|list>
         aliases: [ws]
+        permission: warpsuite.use
+        permission-message: Only ops or players with permission "warpsuite.use" have access to warps.
     setdefaultcooldown:
         description: Set the default cooldown for warps.
         usage: /setdefaultcooldown <seconds>
         aliases: [setcd]
+        permission: warpsuite.setdefaultcooldown
+        permission-message: Only ops can set the default cooldown.
+
+permissions:
+    warpsuite.use:
+        description: Allows players to use the warpsuite command.
+        default: op
+    warpsuite.setdefaultcooldown:
+        description: Allows players to set the default cooldown for warps.
+        default: op

@@ -11,19 +11,25 @@ public class SetDefaultCooldownCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("setdefaultcooldown")) {
-            if (args.length == 0) {
-                sender.sendMessage("Usage: /setdefaultcooldown <seconds>");
+            if (sender.hasPermission("warpsuite.setdefaultcooldown")) {
+                if (args.length == 0) {
+                    sender.sendMessage("Usage: /setdefaultcooldown <seconds>");
+                    return true;
+                }
+
+                try {
+                    int seconds = Integer.parseInt(args[0]);
+                    WarpSuite.getInstance().setWarpCooldown(seconds);
+                    sender.sendMessage("Default cooldown set to " + seconds + " seconds");
+                } catch (NumberFormatException e) {
+                    sender.sendMessage("Invalid cooldown value. Please enter a valid number.");
+                }
                 return true;
             }
-
-            try {
-                int seconds = Integer.parseInt(args[0]);
-                WarpSuite.getInstance().setWarpCooldown(seconds);
-                sender.sendMessage("Default cooldown set to " + seconds + " seconds");
-            } catch (NumberFormatException e) {
-                sender.sendMessage("Invalid cooldown value. Please enter a valid number.");
+            else {
+                sender.sendMessage("You do not have permission to set the default cooldown.");
+                return true;
             }
-            return true;
         }
         return false;
     }
