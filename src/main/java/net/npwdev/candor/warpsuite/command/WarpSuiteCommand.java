@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.npwdev.candor.warpsuite.command.subcommand.*;
+import net.npwdev.candor.warpsuite.WarpSuite;
 
 // WarpSuiteCommand: Handles the /warpsuite command
 
@@ -17,7 +18,7 @@ public class WarpSuiteCommand implements CommandExecutor {
             if (sender instanceof Player) {
                 if (sender.hasPermission("warpsuite.use")) {
                     if (args.length == 0) {
-                        sender.sendMessage("Usage: /warpsuite <set|del|warp|list>");
+                        sender.sendMessage(WarpSuite.MSG_PREFIX + "Usage: /warpsuite <set|del|warp|list>");
                         return true;
                     }
 
@@ -40,18 +41,18 @@ public class WarpSuiteCommand implements CommandExecutor {
                             return true;
                         }
                         default: {
-                            sender.sendMessage("Usage: /warpsuite <set|del|warp|list>");
+                            sender.sendMessage(WarpSuite.MSG_PREFIX + "Usage: /warpsuite <set|del|warp|list>");
                             return true;
                         }
                     }
                 }
                 else {
-                    sender.sendMessage("You do not have permission to use warps.");
+                    sender.sendMessage(WarpSuite.MSG_PREFIX + "You do not have permission to use warps.");
                     return true;
                 }
             }
             else {
-                sender.sendMessage("This command can only be used by players.");
+                sender.sendMessage(WarpSuite.MSG_PREFIX + "This command can only be used by players.");
                 return true;
             }
         }

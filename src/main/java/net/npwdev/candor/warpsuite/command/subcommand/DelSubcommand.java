@@ -5,10 +5,11 @@ import org.bukkit.entity.Player;
 import net.npwdev.candor.warpsuite.WarpSuite;
 
 // DelSubcommand: Handles the /warpsuite del sub-command
+
 public class DelSubcommand {
     public static void execute(CommandSender sender, String[] args) {
         if (args.length == 1) {
-            sender.sendMessage("Usage: /warpsuite del <warpName>");
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "Usage: /warpsuite del <warpName>");
             return;
         }   
         

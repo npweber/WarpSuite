@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.bukkit.entity.Player;
+import net.npwdev.candor.warpsuite.WarpSuite;
 
 // WarpManager: Manages all warp points in memory
 
@@ -56,7 +57,7 @@ public class WarpManager {
 
         // If the player has no warps, send a message and return
         if (this.getPlayerWarpCount(playerName) == 0) {
-            player.sendMessage("You have no warps to delete.");
+            player.sendMessage(WarpSuite.MSG_PREFIX + "You have no warps to delete.");
             return;
         }
 
@@ -65,7 +66,7 @@ public class WarpManager {
 
         // If the warp doesn't exist, send a message and return
         if(playerWarps.stream().noneMatch(warp -> warp.getName().equals(warpName))) {
-            player.sendMessage("Warp not found.");
+            player.sendMessage(WarpSuite.MSG_PREFIX + "Warp not found.");
             return;
         }
         else {
@@ -76,7 +77,7 @@ public class WarpManager {
             this.warps.put(playerName, playerWarps);
 
             // Send a message to the player stating that the warp has been deleted
-            player.sendMessage("Warp deleted.");
+            player.sendMessage(WarpSuite.MSG_PREFIX + "Warp deleted.");
         }
     }
 }

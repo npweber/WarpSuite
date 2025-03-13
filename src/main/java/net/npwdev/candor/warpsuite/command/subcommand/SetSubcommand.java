@@ -9,6 +9,7 @@ import net.npwdev.candor.warpsuite.WarpSuite;
 import net.npwdev.candor.warpsuite.warps.Warp;
 
 // SetSubcommand: Handles the /warpsuite set sub-command
+
 public class SetSubcommand {
 
     private static final WarpSuite plugin = WarpSuite.getInstance();
@@ -18,13 +19,13 @@ public class SetSubcommand {
 
         // If the player has reached the maximum number of warps, send a message and return
         if(plugin.getWarpManager().getPlayerWarpCount(player.getPlayerListName()) >= 3) {
-            sender.sendMessage("You have reached the maximum number of warps. Delete an existing warp to create more.");
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "You have reached the maximum number of warps. Delete an existing warp to create more.");
             return;
         }
 
         // If the player doesn't provide a warp name, send a message and return
         if (args.length == 1) {
-            sender.sendMessage("Usage: /warpsuite set <warpName> [world] [x] [y] [z]");
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "Usage: /warpsuite set <warpName> [world] [x] [y] [z]");
             return;
         }
         // If the player doesn't provide a location, use the player's current location
@@ -44,7 +45,7 @@ public class SetSubcommand {
             plugin.getWarpManager().addPlayerWarp(player.getPlayerListName(), new Warp(warpName, world, x, y, z, yaw, pitch));
 
             // Send a message to the player stating that the warp has been created
-            player.sendMessage("Warp created: " + warpName);
+            player.sendMessage(WarpSuite.MSG_PREFIX + "Warp created: " + warpName);
             return;
         }   
         // If the player provides a location, use the provided location
@@ -64,7 +65,7 @@ public class SetSubcommand {
             plugin.getWarpManager().addPlayerWarp(player.getPlayerListName(), new Warp(warpName, world, x, y, z, 0.0f, 0.0f));
 
             // Send a message to the player stating that the warp has been created
-            player.sendMessage("Warp created: " + warpName);
+            player.sendMessage(WarpSuite.MSG_PREFIX + "Warp created: " + warpName);
         }
     }
 }

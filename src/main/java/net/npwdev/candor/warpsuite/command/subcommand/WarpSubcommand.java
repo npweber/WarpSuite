@@ -9,6 +9,7 @@ import net.npwdev.candor.warpsuite.WarpSuite;
 import net.npwdev.candor.warpsuite.warps.Warp;
 
 // WarpSubcommand: Handles the /warpsuite warp sub-command
+
 public class WarpSubcommand {
 
     private static final WarpSuite plugin = WarpSuite.getInstance();
@@ -18,7 +19,7 @@ public class WarpSubcommand {
 
         // If the player is on cooldown, send a message and return
         if (plugin.getCooldownManager().playerIsOnCooldown(player.getPlayerListName())) {
-            sender.sendMessage("You are on cooldown. Please wait " + plugin.getWarpCooldown() + " seconds before warping again.");
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "You are on cooldown. Please wait " + plugin.getWarpCooldown() + " seconds before warping again.");
             return;
         }
 
@@ -26,7 +27,7 @@ public class WarpSubcommand {
 
         // If the player has no warps, send a message and return
         if(plugin.getWarpManager().getPlayerWarpCount(player.getPlayerListName()) == 0) {
-            sender.sendMessage("You have no warps to teleport to.");
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "You have no warps to teleport to.");
             return;
         // Otherwise, Get the player's warps
         } else {
@@ -35,7 +36,7 @@ public class WarpSubcommand {
 
         // If the player doesn't provide a warp name, send a message and return
         if (args.length == 1) {
-            sender.sendMessage("Usage: /warpsuite warp <warpName>");
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "Usage: /warpsuite warp <warpName>");
             return;
         }
         
@@ -47,7 +48,7 @@ public class WarpSubcommand {
 
         // If the warp doesn't exist, send a message and return
         if (warp == null) {
-            sender.sendMessage("Warp not found: " + warpName);
+            sender.sendMessage(WarpSuite.MSG_PREFIX + "Warp not found: " + warpName);
             return;
         }
 
@@ -58,6 +59,6 @@ public class WarpSubcommand {
         plugin.getCooldownManager().addPlayerCooldown(player.getPlayerListName());
 
         // Send a message to the player stating that they have been teleported to the warp
-        sender.sendMessage("Teleported to warp: " + warpName);
+        sender.sendMessage(WarpSuite.MSG_PREFIX + "Teleported to warp: " + warpName);
     }
 }

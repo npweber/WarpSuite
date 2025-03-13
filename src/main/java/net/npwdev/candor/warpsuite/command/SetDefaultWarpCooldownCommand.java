@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import net.npwdev.candor.warpsuite.WarpSuite;
 
 // SetDefaultWarpCooldownCommand: Handles the /setdefaultwarpcooldown command
+
 public class SetDefaultWarpCooldownCommand implements CommandExecutor {
 
     @Override
@@ -14,7 +15,7 @@ public class SetDefaultWarpCooldownCommand implements CommandExecutor {
         if (command.getName().equalsIgnoreCase("setdefaultwarpcooldown")) {
             if (sender.hasPermission("warpsuite.setdefaultwarpcooldown")) {
                 if (args.length == 0) {
-                    sender.sendMessage("Usage: /setdefaultwarpcooldown <seconds>");
+                    sender.sendMessage(WarpSuite.MSG_PREFIX + "Usage: /setdefaultwarpcooldown <seconds>");
                     return true;
                 }
 
@@ -27,15 +28,15 @@ public class SetDefaultWarpCooldownCommand implements CommandExecutor {
                     WarpSuite.getInstance().setWarpCooldown(seconds);
 
                     // Send a message to the sender stating that the warp cooldown has been set
-                    sender.sendMessage("Default warp cooldown set to " + seconds + " seconds");
+                    sender.sendMessage(WarpSuite.MSG_PREFIX + "Default warp cooldown set to " + seconds + " seconds");
                 } catch (NumberFormatException e) {
                     // Send a message to the sender if the cooldown value is not a number
-                    sender.sendMessage("Invalid warp cooldown value. Please enter a valid number.");
+                    sender.sendMessage(WarpSuite.MSG_PREFIX + "Invalid warp cooldown value. Please enter a valid number.");
                 }
                 return true;
             }
             else {
-                sender.sendMessage("You do not have permission to set the default warp cooldown.");
+                sender.sendMessage(WarpSuite.MSG_PREFIX + "You do not have permission to set the default warp cooldown.");
                 return true;
             }
         }

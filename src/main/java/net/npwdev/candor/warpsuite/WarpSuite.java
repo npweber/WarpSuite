@@ -1,7 +1,7 @@
 package net.npwdev.candor.warpsuite;
 
 import org.bukkit.plugin.java.JavaPlugin;
-
+import org.bukkit.ChatColor;
 import net.npwdev.candor.warpsuite.command.WarpSuiteCommand;
 import net.npwdev.candor.warpsuite.command.SetDefaultWarpCooldownCommand;
 import net.npwdev.candor.warpsuite.warps.WarpManager;
@@ -12,6 +12,8 @@ import java.io.File;
 // WarpSuite: Plugin Main Class
 
 public class WarpSuite extends JavaPlugin {
+
+    public static final String MSG_PREFIX = ChatColor.GRAY + "[" + ChatColor.DARK_PURPLE + "WarpSuite" + ChatColor.GRAY + "] " + ChatColor.WHITE;
 
     // WarpManager: Manages all warp points
     private WarpManager warpManager;
