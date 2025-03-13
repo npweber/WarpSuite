@@ -3,41 +3,57 @@ package net.npwdev.candor.warpsuite;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.npwdev.candor.warpsuite.command.WarpSuiteCommand;
-import net.npwdev.candor.warpsuite.command.SetDefaultCooldownCommand;
+import net.npwdev.candor.warpsuite.command.SetDefaultWarpCooldownCommand;
 import net.npwdev.candor.warpsuite.warps.WarpManager;
 import net.npwdev.candor.warpsuite.warps.CooldownManager;
 
 import java.io.File;
 
+// WarpSuite: Plugin Main Class
+
 public class WarpSuite extends JavaPlugin {
 
+    // WarpManager: Manages all warp points
     private WarpManager warpManager;
 
+    // WarpDataManager: Manages warp data for players
+    private WarpDataManager warpDataManager;
+
+    // WarpCooldown: The cooldown time in seconds for warps
     private int warpCooldown;
+
+    // CooldownManager: Manages cooldowns for warps
     private CooldownManager cooldownManager;
 
     @Override
     public void onEnable() {
         warpManager = new WarpManager();
-        new JSONDataManager().loadPlayerWarps();
+        warpDataManager = new WarpDataManager();
 
+        // Load player warps from plugin-data-folder/warpData
+        warpDataManager.loadPlayerWarps();
+
+        // Check if config.yml exists, if not, save default config
         if (!new File(getDataFolder(), "config.yml").exists())
             saveDefaultConfig();
 
-        // TODO: Fix getConfig() NullPointerException
-        //warpCooldown = getConfig().getInt("warp-cooldown");
-        warpCooldown = 5;
+        // Get warp cooldown from config.yml
+        warpCooldown = getConfig().getInt("warp-cooldown");
+
         cooldownManager = new CooldownManager();
 
+        // Set up commands
         getCommand("ws").setExecutor(new WarpSuiteCommand());
-        getCommand("setdefaultcooldown").setExecutor(new SetDefaultCooldownCommand());
+        getCommand("setdefaultwarpcooldown").setExecutor(new SetDefaultWarpCooldownCommand());
 
         getLogger().info("WarpSuite has been enabled!");
     }
     
     @Override
     public void onDisable() {
-        new JSONDataManager().savePlayerWarps();
+        // Save player warps to plugin-data-folder/warpData
+        warpDataManager.savePlayerWarps();
+
         getLogger().info("WarpSuite has been disabled!");
     }
 
@@ -57,6 +73,7 @@ public class WarpSuite extends JavaPlugin {
         return this.warpCooldown;
     }
 
+    // Set the warp cooldown in config.yml and update the cooldown variable
     public void setWarpCooldown(int warpCooldown) {
         this.warpCooldown = warpCooldown;
         getConfig().set("warp-cooldown", warpCooldown);

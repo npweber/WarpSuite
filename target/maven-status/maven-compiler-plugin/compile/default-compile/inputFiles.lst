@@ -1,0 +1,11 @@
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/warps/WarpManager.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/warps/Warp.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/command/subcommand/WarpSubcommand.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/command/WarpSuiteCommand.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/warps/CooldownManager.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/command/subcommand/DelSubcommand.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/command/subcommand/ListSubcommand.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/command/SetDefaultCooldownCommand.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/WarpSuite.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/command/subcommand/SetSubcommand.java
+/home/nathan/SE-Consulting/WarpSuite/src/main/java/net/npwdev/candor/warpsuite/WarpDataManager.java

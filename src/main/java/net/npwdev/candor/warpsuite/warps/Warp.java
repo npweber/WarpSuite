@@ -2,6 +2,9 @@ package net.npwdev.candor.warpsuite.warps;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+
+// Warp: Represents a warp point in the game
+
 public class Warp {
     private final String name;
     private final Location location;

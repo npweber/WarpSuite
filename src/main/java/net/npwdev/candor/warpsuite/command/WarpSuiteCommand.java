@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 
 import net.npwdev.candor.warpsuite.command.subcommand.*;
 
+// WarpSuiteCommand: Handles the /warpsuite command
+
 public class WarpSuiteCommand implements CommandExecutor {
 
     @Override
